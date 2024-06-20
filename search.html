@@ -1,0 +1,225 @@
+<!-- 
+</body>
+</html> 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Symptom Checker</title>
+</head>
+<body>
+<h2>Symptom Checker</h2>
+<form id="symptomForm">
+  <h3>Early Stage Symptoms:</h3>
+  <label><input type="checkbox" name="earlySymptom" value="Fatigue"> Fatigue</label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Headache"> Headache</label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Fever">Fever </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Muscle or joint pain">Muscle or joint pain </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Nausea">Nausea </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Vomiting">Vomiting </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Sore throat">Sore throat </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Runny or stuffy nose">Runny or stuffy nose </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Dry skin">Dry skin </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Brittle nails"> Brittle nails</label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Hair loss">Hair loss </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Irregular menstural periods">Irregular menstural periods </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Sensitivity to light"> Sensitivity to light</label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Sensitivity to sound">Sensitivity to sound </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Tingling or numbness">Tingling or numbness </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Weakness"> Weakness</label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Difficulty eating or drinking">Difficulty eating or drinking </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Painful sores or lesions inside the mouth">Painful sores or lesions inside the mouth </label><br>
+  <label><input type="checkbox" name="earlySymptom" value="Skin rash (initial appearance)">Skin rash (initial appearance) </label><br>
+  
+  
+  
+  <h3>Intermediate Stage Symptoms:</h3>
+  <label><input type="checkbox" name="intermediateSymptom" value="Shortness of breath"> Shortness of breath</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Wheezing"> Wheezing</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Coughing"> Coughing </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Chest tightness">Chest tightness </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Swelling"> Swelling</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Weight changes">Weight changes </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value=" Joint stiffness">Joint stiffness</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Abdominal pain">Abdominal pain </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Diarrhea"> Diarrhea</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Swollen neck lymph nodes"> Swollen neck lymph nodes</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Yellowing of skin/eyes"> Yellowing of skin/eyes</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Rapid breathing">Rapid breathing </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Anemia">Anemia </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Loss of appetite"> Loss of appetite</label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Chills">Chills </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Dark urine">Dark urine </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Pale stools">Pale stools </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Itchy skin">Itchy skin </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Gum bleeding">Gum bleeding </label><br>
+  <label><input type="checkbox" name="intermediateSymptom" value="Nosebleeds">Nosebleeds </label><br>
+   
+
+  
+  <h3>Advanced Stage Symptoms:</h3>
+  <label><input type="checkbox" name="advancedSymptom" value="Difficulty sleeping"> Difficulty sleeping</label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Chest pain"> Chest pain</label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Skin rash (progression or complication)"> Skin rash (progression or complication)</label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Abdominal cramps">Abdominal cramps </label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Bloating">Bloating </label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Excess hair growth"> Excess hair growth</label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Darkening of skin">Darkening of skin </label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Skin tags"> Skin tags</label><br>
+  <label><input type="checkbox" name="advancedSymptom" value="Infertility"> Infertility</label><br>
+  
+  
+  <br>
+  <button type="button" onclick="checkSymptoms()">Check Symptoms</button>
+</form>
+<div id="output"></div>
+
+<script>
+function checkSymptoms() {
+  const symptoms = document.querySelectorAll('input[name="symptom"]:checked');
+  const selectedSymptoms = Array.from(symptoms).map(symptom => symptom.value);
+
+  const diseases = {
+    'Migraine': ['headache','Sensitivity to light '],
+    'Typhoid': ['headache', 'fever'],
+    'Dengue': ['headache', 'fever', 'fatigue'],
+    'Malaria': ['headache', 'fever', 'fatigue'],
+    'Pneumonia': ['headache', 'fever', 'fatigue'],
+    'Diabetes': ['fever', 'fatigue'],
+    'Thyroid': ['fever', 'fatigue'],
+    'Chickenpox': ['fever'],
+    'Diarrhea': ['fever'],
+    'Flu': ['fever', 'fatigue'],
+    'PCOD': ['fatigue'],
+    'Jaundice': ['fatigue'],
+    'TB': ['fatigue']
+
+    // Add more disease-symptom mappings here
+  };
+
+  let possibleDiseases = [];
+  Object.keys(diseases).forEach(disease => {
+    const diseaseSymptoms = diseases[disease];
+    if (diseaseSymptoms.some(symptom => selectedSymptoms.includes(symptom))) {
+      possibleDiseases.push(disease);
+    }
+  });
+
+  const outputElement = document.getElementById('output');
+  outputElement.innerHTML = possibleDiseases.length > 0 ? `Possible diseases: ${possibleDiseases.join(', ')}` : 'No diseases found';
+}
+</script>
+</body>
+</html> 
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Symptom Checker</title>
+ <style>
+   body {
+    background-color: aquamarine;
+   }
+  
+   
+ </style>
+ </head>
+ <body>
+ <h1>Identify your problem</h1>
+ 
+ <form id="symptomForm">
+     <label><input type="checkbox" name="symptom" value="Headache"> Headache</label><br>
+     <label><input type="checkbox" name="symptom" value="Fever"> Fever</label><br>
+     <label><input type="checkbox" name="symptom" value="Fatigue"> Fatigue</label><br>
+     <label><input type="checkbox" name="symptom" value="Nausea"> Nausea</label><br>
+     <label><input type="checkbox" name="symptom" value="Vomiting"> Vomiting</label><br>
+     <label><input type="checkbox" name="symptom" value="Cough"> Cough</label><br>
+     <label><input type="checkbox" name="symptom" value="Shortness of breath"> Shortness of breath</label><br>
+     <label><input type="checkbox" name="symptom" value="Wheezing"> Wheezing</label><br>
+     <label><input type="checkbox" name="symptom" value="Chest pain"> Chest pain</label><br>
+     <label><input type="checkbox" name="symptom" value="Muscle or joint pain"> Muscle or joint pain</label><br>
+     <label><input type="checkbox" name="symptom" value="Joint stiffness"> Joint stiffness</label><br>
+     <label><input type="checkbox" name="symptom" value="Swelling"> Swelling</label><br>
+     <label><input type="checkbox" name="symptom" value="Weight changes"> Weight changes</label><br>
+     <label><input type="checkbox" name="symptom" value="Dry skin"> Dry skin</label><br>
+     <label><input type="checkbox" name="symptom" value="Skin rash"> Skin rash</label><br>
+     <label><input type="checkbox" name="symptom" value="Difficulty sleeping"> Difficulty sleeping</label><br>
+     <label><input type="checkbox" name="symptom" value="Abdominal pain"> Abdominal pain</label><br>
+     <label><input type="checkbox" name="symptom" value="Diarrhea"> Diarrhea</label><br>
+     <label><input type="checkbox" name="symptom" value="Swollen neck lymph nodes"> Swollen neck lymph nodes</label><br>
+     <label><input type="checkbox" name="symptom" value="Yellowing of skin/eyes"> Yellowing of skin/eyes</label><br>
+     <label><input type="checkbox" name="symptom" value="Irregular menstrual periods"> Irregular menstrual periods</label><br>
+     <label><input type="checkbox" name="symptom" value="Sensitivity to light"> Sensitivity to light</label><br>
+     <label><input type="checkbox" name="symptom" value="Sensitivity to sound"> Sensitivity to sound</label><br>
+     <label><input type="checkbox" name="symptom" value="Tingling or numbness"> Tingling or numbness</label><br>
+     <label><input type="checkbox" name="symptom" value="Weakness"> Weakness</label><br>
+     <label><input type="checkbox" name="symptom" value="Sensation of pressure or tightness in chest"> Sensation of pressure or tightness in chest</label><br>
+     <label><input type="checkbox" name="symptom" value="Difficulty eating or drinking"> Difficulty eating or drinking</label><br>
+     <label><input type="checkbox" name="symptom" value="Painful sores or lesions inside the mouth"> Painful sores or lesions inside the mouth</label><br>
+     <label><input type="checkbox" name="symptom" value="Rapid breathing"> Rapid breathing</label><br>
+     <label><input type="checkbox" name="symptom" value="Anemia"> Anemia</label><br>
+     <label><input type="checkbox" name="symptom" value="Loss of appetite"> Loss of appetite</label><br>
+     <label><input type="checkbox" name="symptom" value="Chills"> Chills</label><br>
+     <label><input type="checkbox" name="symptom" value="Dark urine"> Dark urine</label><br>
+     <label><input type="checkbox" name="symptom" value="Pale stools"> Pale stools</label><br>
+     <label><input type="checkbox" name="symptom" value="Itchy skin"> Itchy skin</label><br>
+     <label><input type="checkbox" name="symptom" value="Nosebleeds"> Nosebleeds</label><br>
+     <label><input type="checkbox" name="symptom" value="Gum bleeding"> Gum bleeding</label><br>
+     <br>
+     <button type="button" onclick="checkSymptoms()">Identify your problem</button>
+     <button> <a href="details.html">Get Details</a></button>
+ </form>
+ 
+ <div id="result"></div>
+ 
+ <script>
+ function checkSymptoms() {
+     // Get all selected symptoms
+     const selectedSymptoms = Array.from(document.querySelectorAll('input[name="symptom"]:checked')).map(checkbox => checkbox.value);
+     
+     // Perform disease detection based on symptoms
+     const diseases = {
+         'Migraine': ['Headache'],
+         'Cervical Symptoms': ['Neck pain', 'Stiffness in the neck', 'Numbness or tingling in the arms or hands', 'Weakness in the arms or hands', 'Headaches', 'Limited mobility in the neck', 'Muscle spasms in the neck'],
+         'Arthritis': ['Joint pain', 'Stiffness in the joints', 'Swelling around the joints', 'Decreased range of motion', 'Fatigue', 'Joint deformities', 'Joint instability', 'Warmth and redness in the joints'],
+         'Diabetes': ['Frequent urination', 'Increased thirst', 'Extreme hunger', 'Unexplained weight loss', 'Fatigue', 'Blurred vision', 'Slow-healing sores or frequent infections', 'Tingling, numbness, or pain in the hands or feet', 'Dry, itchy skin', 'Frequent yeast infections', 'Gum disease'],
+         'Thyroid': ['Fatigue', 'Weight changes', 'Sensitivity to cold or heat', 'Constipation or diarrhea', 'Dry skin', 'Brittle nails', 'Hair loss', 'Irregular menstrual periods', 'Muscle weakness', 'Elevated heart rate', 'Mood changes'],
+         'Asthma': ['Shortness of breath', 'Wheezing', 'Coughing', 'Chest tightness', 'Difficulty sleeping', 'Fatigue', 'Increased respiratory rate', 'Anxiety or panic', 'Symptoms triggered by specific factors'],
+         'PCOD': ['Irregular menstrual periods', 'Excess facial or body hair', 'Acne', 'Weight gain', 'Thinning hair on the scalp', 'Darkening of the skin', 'Skin tags', 'Infertility or difficulty getting pregnant'],
+         'Chickenpox': ['Rash', 'Fever', 'Fatigue', 'Headache', 'Loss of appetite', 'Sore throat', 'Muscle or joint pain'],
+         'Diarrhea': ['Frequent loose or watery stools', 'Abdominal cramps', 'Bloating', 'Nausea', 'Vomiting', 'Fever', 'Blood in stool'],
+         'Flu': ['Fever', 'Chills', 'Cough', 'Sore throat', 'Runny or stuffy nose', 'Muscle or body aches', 'Fatigue', 'Headache', 'Vomiting and diarrhea'],
+         'Food Poisoning': ['Nausea', 'Vomiting', 'Diarrhea', 'Abdominal cramps', 'Fever', 'Headache', 'Muscle aches'],
+         'Typhoid': ['Fever', 'Headache', 'Weakness and fatigue', 'Abdominal pain', 'Diarrhea or constipation', 'Rash', 'Loss of appetite', 'Cough'],
+         'Dengue': ['Sudden high fever', 'Severe headaches', 'Pain behind the eyes', 'Joint and muscle pain', 'Fatigue', 'Nausea', 'Vomiting', 'Skin rash', 'Mild bleeding'],
+         'Malaria': ['Intermittent fever with chills and sweating', 'Headaches', 'Muscle aches', 'Fatigue', 'Nausea and vomiting', 'Diarrhea', 'Jaundice', 'Anemia'],
+         'Mouth Ulcer': ['Painful sores or lesions inside the mouth', 'Irritation or burning sensation', 'Difficulty eating or drinking', 'Swelling', 'Redness'],
+         'Jaundice': ['Yellowing of the skin and whites of the eyes', 'Fatigue', 'Weakness', 'Abdominal pain and swelling', 'Dark urine', 'Pale stools', 'Itchy skin', 'Nausea and vomiting'],
+         'TB': ['Cough', 'Chest pain', 'Fatigue', 'Fever', 'Night sweats', 'Weight loss', 'Loss of appetite', 'Chills', 'Weakness or fatigue'],
+         'Pneumonia': ['Cough', 'Fever', 'Chills', 'Shortness of breath', 'Chest pain', 'Rapid breathing', 'Fatigue', 'Nausea or vomiting'],
+     };
+     
+     // Find diseases that match the selected symptoms
+     const matchedDiseases = Object.keys(diseases).filter(disease => {
+         const symptoms = diseases[disease];
+         return selectedSymptoms.every(symptom => symptoms.includes(symptom));
+     });
+ 
+     // Display the result
+     const resultDiv = document.getElementById('result');
+     if (matchedDiseases.length > 0) {
+         resultDiv.textContent = 'Possible diseases: ' + matchedDiseases.join(', ');
+     } else {
+         resultDiv.textContent = 'No matching diseases found.';
+     }
+ }
+ </script>
+ </body>
+ </html>
+ 
